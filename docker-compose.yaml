@@ -1,0 +1,43 @@
+
+services:
+  microproceso1:
+    build:
+      context: ./microproceso1 
+      dockerfile: Dockerfile
+    image: microproceso1
+    container_name: microproceso1 # Ruta donde está el Dockerfile de microproceso1
+    ports:
+      - "5001:5000"  # Exponemos el puerto 5001
+    networks:
+      - microprocesos-network
+
+  microproceso2:
+    image: microproceso2
+    build:
+      context: ./microproceso2  # Ruta donde está el Dockerfile de microproceso2
+    ports:
+      - "5002:5000"  # Exponemos el puerto 5002
+    networks:
+      - microprocesos-network
+
+  microproceso3:
+    image: microproceso3
+    build:
+      context: ./microproceso3  # Ruta donde está el Dockerfile de microproceso3
+    ports:
+      - "5003:5000"  # Exponemos el puerto 5003
+    networks:
+      - microprocesos-network
+
+  microproceso4:
+    image: microproceso4
+    build:
+      context: ./microproceso4  # Ruta donde está el Dockerfile de microproceso4
+    ports:
+      - "5004:5000"  # Exponemos el puerto 5004
+    networks:
+      - microprocesos-network
+
+networks:
+  microprocesos-network:
+    driver: bridge

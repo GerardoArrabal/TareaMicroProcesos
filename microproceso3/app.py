@@ -24,4 +24,4 @@ def get_demo(municipioid):
         return jsonify({'error': f'Error al leer el archivo JSON: {str(e)}'}), 500
 
 if __name__ == '__main__':
-    app3.run(port=5002)
+    app3.run(port=5003)

@@ -5,12 +5,11 @@ app2 = Flask(__name__)
 
 @app2.route('/<int:municipioid>/meteo', methods=['GET'])
 def get_meteo(municipioid):
-    # Realizamos el fetch a la API
     response = requests.get(f"https://www.el-tiempo.net/api/json/v2/provincias/18/municipios/{municipioid}")
     
-    # Verifica si la respuesta es exitosa
+    
     if response.status_code != 200:
-        abort(404)  # Maneja el error de municipio no encontrado
+        abort(404) 
 
     data = response.json()
     info = {
@@ -23,7 +22,7 @@ def get_meteo(municipioid):
         "Precipitacion": data["precipitacion"],
         "Lluvia": data["lluvia"]
     }
-    return jsonify(info)  # Asegúrate de devolver un JSON
+    return jsonify(info)  
 
 if __name__ == '__main__':
-    app2.run(port=5001, host='0.0.0.0', debug=True)  # Cambiado a port=5001 y host='0.0.0.0'
+    app2.run(port=5002, host='0.0.0.0', debug=True)  

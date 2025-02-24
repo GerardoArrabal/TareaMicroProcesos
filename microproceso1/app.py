@@ -21,4 +21,4 @@ def get_geo(municipioid):
         return jsonify({'error': f'Error al leer el archivo JSON: {str(e)}'}), 500
 
 if __name__ == '__main__':
-    app1.run(port=5000)
+    app1.run(port=5001)

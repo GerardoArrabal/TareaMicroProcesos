@@ -7,9 +7,8 @@ app4 = Flask(__name__)
 @app4.route('/<int:municipioid>/<string:parametro2>/<string:parametro1>', methods=['GET'])
 def get_combined(municipioid, parametro1, parametro2):
     try:
-        # Llamadas a microproceso1 y microproceso2
-        meteo_url = f"http://localhost:5000/{municipioid}/geo"
-        municipio_url = f"http://localhost:5001/{municipioid}/demo" 
+        meteo_url = f"http://microproceso1:5000/{municipioid}/geo"
+        municipio_url = f"http://microproceso2:5001/{municipioid}/demo" 
 
         info = {}
 
@@ -46,4 +45,4 @@ def get_combined(municipioid, parametro1, parametro2):
         return jsonify({'error': f'Error inesperado: {str(e)}'}), 500
 
 if __name__ == '__main__':
-    app4.run(port=5003)
+    app4.run(port=5004)
